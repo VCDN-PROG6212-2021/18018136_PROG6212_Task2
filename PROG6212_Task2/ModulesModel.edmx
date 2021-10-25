@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HyperOrganizerDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Completed_Hours">
+          <Key>
+            <PropertyRef Name="CompHours_ID" />
+          </Key>
+          <Property Name="CompHours_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="hours" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Modules">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Module_Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Module_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Credits" Type="int" Nullable="false" />
+          <Property Name="Weekly_Hours" Type="int" Nullable="false" />
+          <Property Name="Semester_Weeks" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Completed_Ho__ID__15502E78">
+          <End Role="Modules" Type="Self.Modules" Multiplicity="0..1" />
+          <End Role="Completed_Hours" Type="Self.Completed_Hours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Completed_Hours">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Modules__UserID__1273C1CD">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Modules" Type="Self.Modules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Modules">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HyperOrganizerDBModelStoreContainer">
+          <EntitySet Name="Completed_Hours" EntityType="Self.Completed_Hours" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modules" EntityType="Self.Modules" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Completed_Ho__ID__15502E78" Association="Self.FK__Completed_Ho__ID__15502E78">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="Completed_Hours" EntitySet="Completed_Hours" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Modules__UserID__1273C1CD" Association="Self.FK__Modules__UserID__1273C1CD">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Modules" EntitySet="Modules" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HyperOrganizerDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Completed_Hours">
+          <Key>
+            <PropertyRef Name="CompHours_ID" />
+          </Key>
+          <Property Name="CompHours_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="hours" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" />
+          <NavigationProperty Name="Module" Relationship="Self.FK__Completed_Ho__ID__15502E78" FromRole="Completed_Hours" ToRole="Modules" />
+        </EntityType>
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Module_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Module_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Credits" Type="Int32" Nullable="false" />
+          <Property Name="Weekly_Hours" Type="Int32" Nullable="false" />
+          <Property Name="Semester_Weeks" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserID" Type="Int32" />
+          <NavigationProperty Name="Completed_Hours" Relationship="Self.FK__Completed_Ho__ID__15502E78" FromRole="Modules" ToRole="Completed_Hours" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Modules__UserID__1273C1CD" FromRole="Modules" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Modules" Relationship="Self.FK__Modules__UserID__1273C1CD" FromRole="Users" ToRole="Modules" />
+        </EntityType>
+        <Association Name="FK__Completed_Ho__ID__15502E78">
+          <End Role="Modules" Type="Self.Module" Multiplicity="0..1" />
+          <End Role="Completed_Hours" Type="Self.Completed_Hours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Completed_Hours">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Modules__UserID__1273C1CD">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Modules" Type="Self.Module" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Modules">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HyperOrganizerDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Completed_Hours" EntityType="Self.Completed_Hours" />
+          <EntitySet Name="Modules" EntityType="Self.Module" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK__Completed_Ho__ID__15502E78" Association="Self.FK__Completed_Ho__ID__15502E78">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="Completed_Hours" EntitySet="Completed_Hours" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Modules__UserID__1273C1CD" Association="Self.FK__Modules__UserID__1273C1CD">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Modules" EntitySet="Modules" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HyperOrganizerDBModelStoreContainer" CdmEntityContainer="HyperOrganizerDBEntities">
+          <EntitySetMapping Name="Completed_Hours">
+            <EntityTypeMapping TypeName="HyperOrganizerDBModel.Completed_Hours">
+              <MappingFragment StoreEntitySet="Completed_Hours">
+                <ScalarProperty Name="CompHours_ID" ColumnName="CompHours_ID" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="hours" ColumnName="hours" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modules">
+            <EntityTypeMapping TypeName="HyperOrganizerDBModel.Module">
+              <MappingFragment StoreEntitySet="Modules">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Module_Code" ColumnName="Module_Code" />
+                <ScalarProperty Name="Module_Name" ColumnName="Module_Name" />
+                <ScalarProperty Name="Credits" ColumnName="Credits" />
+                <ScalarProperty Name="Weekly_Hours" ColumnName="Weekly_Hours" />
+                <ScalarProperty Name="Semester_Weeks" ColumnName="Semester_Weeks" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="HyperOrganizerDBModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

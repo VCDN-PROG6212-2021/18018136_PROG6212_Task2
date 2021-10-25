@@ -1,0 +1,62 @@
+﻿<Window x:Class="PROG6212_Task1.AddModulesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PROG6212_Task1"
+        mc:Ignorable="d"
+        Title="AddModulesWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#3f5efb" Offset="0"/>
+                <GradientStop Color="#fc466b" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Label x:Name="lblHeading1" Content="Add Modules" HorizontalAlignment="Left" Margin="277,0,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="36">
+            <Label.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#3f5efb" Offset="0"/>
+                    <GradientStop Color="#fc466b" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Background>
+        </Label>
+        <GroupBox x:Name="grpModules" Header="" Margin="51,63,58,109" FontSize="25">
+            <GroupBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#3f5efb" Offset="1"/>
+                </LinearGradientBrush>
+            </GroupBox.Background>
+        </GroupBox>
+        <Label x:Name="lblModuleCode" Content="Module Code" HorizontalAlignment="Left" Margin="81,85,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="txbModuleCode" HorizontalAlignment="Left" Height="23" Margin="81,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160"/>
+        <Label x:Name="lblModuleName" Content="Module Name" HorizontalAlignment="Left" Margin="81,146,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="lblModuleCredits" Content="Module Credits" HorizontalAlignment="Left" Margin="81,209,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="lblModuleHours" Content="Class hours per week" HorizontalAlignment="Left" Margin="474,85,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="txbModuleName" HorizontalAlignment="Left" Height="23" Margin="81,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160"/>
+        <Button x:Name="btnSaveModules" Content="Save" HorizontalAlignment="Center" Margin="0,341,0,0" VerticalAlignment="Top" Width="332" Height="52" FontWeight="Bold" Click="btnSaveModules_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#3f5efb" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Label x:Name="lblSemesterWeeks" Content="Semester Weeks" HorizontalAlignment="Left" Margin="474,146,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="lblModuleStartDate" Content="Module Start Date" HorizontalAlignment="Left" Margin="473,209,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="txbModuleCredits" HorizontalAlignment="Left" Height="23" Margin="82,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160"/>
+        <TextBox x:Name="txbHoursPerWeek" HorizontalAlignment="Left" Height="23" Margin="473,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160"/>
+        <TextBox x:Name="txbSemesterWeeks" HorizontalAlignment="Left" Height="23" Margin="474,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160"/>
+        <DatePicker x:Name="dtpStartDate" HorizontalAlignment="Left" Margin="473,236,0,0" VerticalAlignment="Top" Width="161"/>
+        <Button x:Name="btnBack" Content="View Modules" HorizontalAlignment="Left" Margin="51,7,0,0" VerticalAlignment="Top" Width="165" Height="51" FontWeight="Bold" FontSize="20" Click="btnBack_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#3f5efb" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
+    </Grid>
+</Window>

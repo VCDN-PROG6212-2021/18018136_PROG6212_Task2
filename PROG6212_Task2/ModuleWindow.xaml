@@ -1,0 +1,45 @@
+﻿<Window x:Class="PROG6212_Task1.ModuleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PROG6212_Task1"
+        mc:Ignorable="d"
+        Title="ModuleWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#3f5efb" Offset="0"/>
+                <GradientStop Color="#fc466b" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Label x:Name="lblHeading1" Content="My Modules" HorizontalAlignment="Left" Margin="277,0,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="36">
+            <Label.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#3f5efb" Offset="0"/>
+                    <GradientStop Color="#fc466b" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Background>
+        </Label>
+        <Button x:Name="btnAddModules" Content="+" HorizontalAlignment="Left" Margin="671,345,0,0" VerticalAlignment="Top" Width="97" Height="51" FontWeight="Bold" Click="btnModules_Click" FontSize="35">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#3f5efb" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <ListBox x:Name="lbModules" Margin="10,78,462,92" SelectionChanged="lbModules_SelectionChanged"/>
+        <TextBox x:Name="txbModuleDetails" HorizontalAlignment="Left" Margin="400,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="368" Height="249" FontWeight="Bold" FontSize="20" IsReadOnly="True"/>
+        <Button x:Name="btnAddStudyHours" Content="Add Hours" HorizontalAlignment="Left" Margin="400,345,0,0" VerticalAlignment="Top" Width="202" Height="51" FontWeight="Bold" Click="btnAddStudyHours_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#3f5efb" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Label x:Name="lblWeeklyHours" HorizontalAlignment="Left" Margin="10,298,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+
+    </Grid>
+</Window>
